@@ -3,14 +3,13 @@
 @import "_mixins.scss";
 @import "_reset.scss";
 body{
-    color : red;
+    background : rgb(244, 244, 244);
     p{
         font-size : 12px;
     }
 }
 .container{
-    width : 100vw;
-    height : 100vh;
+        
     @include prefix(display, grid);
     grid-template-columns: 300px 1fr 1fr;
     grid-template-rows: 100px auto;
@@ -27,7 +26,54 @@ body{
     }
     .menu{
         grid-area : menu;
-        background : rgb(98, 230, 24);
+        background : rgb(244, 244, 244);
+        .menuBlock{
+            h2{
+                @include my-font(18px, 700, 'Open Sans');
+                color : rgb(17, 19, 18);
+            }
+            > ul{
+                margin : rem(25px) 0 rem(25px);
+                > li{
+                    margin-left : rem(30px);
+                    a{
+                        @include my-font(14px, 700, 'Open Sans');
+                        color : rgb(33, 139, 226);
+                        text-decoration : none;
+                        line-height : 1.5em;
+                        &.active{
+                            color : rgb(56, 56, 56);
+                        }
+                    }
+                    &.open{
+                        background : rgba(67, 116, 187, 0.25);
+                    }
+                    ul{
+                        display : flex;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        justify-content : flex-start;
+                        align-items: flex-start;
+                        li{
+                            &:last-child{
+                                margin-left : rem(15px);
+                                position: relative;
+                                &:before{
+                                    content : "|";
+                                    position: absolute;
+                                    top : 0px;
+                                    left : rem(-8px);
+                                    color : rgb(36, 36, 36);
+                                }
+                            }
+                        }
+                    }
+                    &.separate{
+                        margin-top : rem(20px);
+                    }
+                }
+            }
+        }
     }
     .header{
         grid-area : header;
